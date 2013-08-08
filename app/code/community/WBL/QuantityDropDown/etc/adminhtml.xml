@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<config>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <wbl_quantity_dropdown>
+                                        <title>WBL Quantity Drop-Down</title> <!-- Utilisé dans l'arborescence des ressources -->
+                                    </wbl_quantity_dropdown>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

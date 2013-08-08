@@ -1,0 +1,36 @@
+<?php
+
+
+/* @var $this Mage_Wishlist_Block_Customer_Wishlist_Item_Column_Cart */
+/* @var Mage_Wishlist_Model_Item $item */
+$item = $this->getItem();
+$product = $item->getProduct();
+?>
+<div class="cart-cell">
+<?php echo $this->getPriceHtml($product);?>
+<div class="add-to-cart-alt">
+<?php if ($item->canHaveQty() && $item->getProduct()->isVisibleInSiteVisibility()): ?>
+	<?php
+        //setting item and quantity for default value, form construction and quantity range calculation
+		$this->getChild('wbl_quantity_dropdown')->setItem($item);
+        //second arg is set to FALSE to disable html cache for this block
+        echo $this->getChildHtml('wbl_quantity_dropdown', FALSE);
+    ?>
+<?php endif; ?>
+<?php if ($product->isSaleable()): ?>
+    <button type="button" title="<?php echo $this->__('Add to Cart') ?>" onclick="addWItemToCart(<?php echo $item->getId()?>);" class="button btn-cart"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
+<?php else: ?>
+    <?php if ($product->getIsSalable()): ?>
+        <p class="availability in-stock"><span><?php echo $this->__('In stock') ?></span></p>
+    <?php else: ?>
+        <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+    <?php endif; ?>
+<?php endif; ?>
+</div>
+<?php foreach($this->getSortedChildren() as $childName):?>
+    <?php echo $this->getChildHtml($childName, false);?>
+<?php endforeach;?>
+<?php if ($product->isVisibleInSiteVisibility()): ?>
+    <p><a class="link-edit" href="<?php echo $this->getItemConfigureUrl($item) ?>"><?php echo $this->__('Edit') ?></a></p>
+<?php endif ?>
+</div>

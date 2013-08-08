@@ -1,0 +1,22 @@
+<?php $qtyOptions = $this->getQuantityOptions(); ?>
+<?php if ($this->isApplicable() && count($qtyOptions)):?>
+<select name="qty" id="qty" title="<?php echo $this->__('Qty') ?>">
+
+
+    <?php foreach($qtyOptions['values'] as $quantity): ?>
+        <option
+            value="<?php echo $quantity; ?>"
+            <?php if (isset($qtyOptions['selected']) && $qtyOptions['selected'] == $quantity): ?>
+            selected="selected"
+            <?php endif; ?>
+        ><?php echo $quantity; ?></option>
+    <?php endforeach; ?>
+
+</select>
+
+<?php
+    else:
+    // Default quantity Input
+?>
+    <input type="text" name="qty" id="qty" maxlength="12" value="<?php echo $this->getProductDefaultQty() * 1 ?>" title="<?php echo $this->__('Qty') ?>" class="input-text qty" />
+<?php endif; ?>

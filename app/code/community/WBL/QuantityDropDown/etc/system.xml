@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <tabs>
+    <wbl translate="label">
+      <label>WBL Extensions</label>
+      <sort_order>99999</sort_order>
+    </wbl>
+    </tabs>
+    <sections>
+        <wbl_quantity_dropdown translate="label" module="WBL_QuantityDropDown">
+            <label>Quantity Drop-Down</label>
+            <tab>wbl</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>2000</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <general translate="label">
+                    <label>General Options</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enable>
+                            <label>Enable extension</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_enabledisable</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enable>
+                    </fields>
+                </general>
+                <default translate="label">
+                    <label>Default</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>20</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <list_values>
+                            <label>Drown-Down List Values</label>
+                            <comment><![CDATA[Default quantity options, Options are separated by commas (,).<br/> Example: 10,100,500,1000,2000,10000]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </list_values>
+                        <preselected_value>
+                            <label>Preselected Value</label>
+                            <comment><![CDATA[This must be one of the above Drow-Down list values.<br/>
+                                    Leave empty if you want the top option as default.]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </preselected_value>
+                    </fields>
+                </default>
+                <attribute_set translate="label">
+                    <label>Attribute Set options</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>30</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <apply_to>
+                            <label>Active for selected attribute sets</label>
+                            <comment><![CDATA[Select the product attribute sets for which to display a dropdown for quantity]]></comment>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>WBL_QuantityDropDown/system_config_source_attributeset_values</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </apply_to>
+                        <list_values>
+                            <label>Drown-Down List Values per Attribute Set</label>
+                            <comment><![CDATA[On each line, specify the attribute_set id and the quantity options, Options are separated by commas (,).<br/> Example for attribute set Id 9, witch defualt values 500 you have to set:   9:500:10,100,250,500,1000,2000,5000,10000]]></comment>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </list_values>
+                    </fields>
+                </attribute_set>
+            </groups>
+        </wbl_quantity_dropdown>
+    </sections>
+</config>

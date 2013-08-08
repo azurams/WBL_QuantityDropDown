@@ -1,0 +1,34 @@
+<?php
+/**
+ * Override of Magento base addtocart.phtml in order to display a list of quantity if needed
+ *
+ *
+ * @category    design
+ * @package     WBL_QuantityDropDown
+ * @copyright   Copyright (c) 2013 William Blanc Dit Jolicoeur (http://blanc-dit-jolicoeur.info)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php $_product = $this->getProduct(); ?>
+<?php $buttonTitle = $this->__('Add to Cart'); ?>
+<?php if($_product->isSaleable()): ?>
+    <div class="add-to-cart">
+        <?php if(!$_product->isGrouped()): ?>
+
+                <label for="qty"><?php echo $this->__('Qty:') ?></label>
+                <?php echo $this->getChildHtml('addtocart_quantity'); ?>
+                <?php // because addtocart_quantity would be displayed by getChildHtml('') few lines below
+                $this->unsetChild('addtocart_quantity'); ?>
+
+                <button type="button" title="<?php echo $buttonTitle ?>" class="button btn-cart" onclick="productAddToCartForm.submit(this)"><span><span><?php echo $buttonTitle ?></span></span></button>
+                <?php echo $this->getChildHtml('', true, true) ?>
+                <?php if (Mage::helper('customization')->canUploadCustomDesign($_product)): ?>
+                  <p><a href="<?php echo Mage::helper('customization')->getUploadFormUrl($_product->getId()) ?>"><?php echo $this->__('Uploader un design personnalisé.'); ?></a></p>
+
+
+            <?php endif; ?>
+
+
+        <?php endif; ?>
+    </div>
+<?php endif; ?>

@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <catalog_product_view>
+        <reference name="product.info.addtocart">
+            <action method="setTemplate">
+                <template>wbl/quantity_dropdown/catalog/product/view/addtocart.phtml</template>
+            </action>
+            <block type="wbl_quantity_dropdown/catalog_product_view_quantity"
+                   name="addtocart_quantity"
+                   template="wbl/quantity_dropdown/catalog/product/view/quantity.phtml">
+            </block>
+        </reference>
+    </catalog_product_view>
+
+    <checkout_cart_index>
+        <reference name="checkout.cart">
+            <action method="addItemRender">
+                <type>simple</type>
+                <block>checkout/cart_item_renderer</block>
+                <template>wbl/quantity_dropdown/checkout/cart/item/default.phtml</template>
+            </action>
+        </reference>
+    </checkout_cart_index>
+
+    <wishlist_index_index>
+        <reference name="customer.wishlist.item.cart">
+            <action method="setTemplate">
+                <template>wbl/quantity_dropdown/wishlist/item/column/cart.phtml</template>
+            </action>
+        </reference>
+    </wishlist_index_index>
+</layout>

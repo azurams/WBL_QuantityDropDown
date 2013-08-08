@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <WBL_QuantityDropDown>
+            <active>true</active>
+            <codePool>community</codePool>
+        </WBL_QuantityDropDown>
+    </modules>
+</config>

@@ -1,0 +1,26 @@
+<?php $qtyOptions = $this->getQuantityOptions(); ?>
+<?php if($this->getData('qtyError')): ?>
+Quantity Error, please update the cart
+<?php endif; ?>
+<?php $_item = $this->getItem();?>
+<?php if ($this->isApplicable() && count($qtyOptions)):?>
+<select name="cart[<?php echo $_item->getId() ?>][qty]" id="cart[<?php echo $_item->getId() ?>][qty]" title="<?php echo $this->__('Qty') ?>">
+
+    <?php foreach($qtyOptions['values'] as $quantity): ?>
+        <option
+            value="<?php echo $quantity; ?>"
+            <?php if ($quantity == $this->getQty()): ?>
+            selected="selected"
+            <?php endif; ?>
+        ><?php echo $quantity; ?></option>
+    <?php endforeach; ?>
+
+</select>
+
+<?php
+    else:
+    // Default quantity Input
+?>
+<input name="cart[<?php echo $_item->getId() ?>][qty]" value="<?php echo $this->getQty() ?>" size="4" title="<?php echo $this->__('Qty') ?>" class="input-text qty" maxlength="12" />
+
+<?php endif; ?>

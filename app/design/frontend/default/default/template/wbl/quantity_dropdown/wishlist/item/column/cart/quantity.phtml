@@ -1,0 +1,25 @@
+<?php $qtyOptions = $this->getQuantityOptions(); ?>
+<?php $_item = $this->getItem();?>
+<?php if ($this->isApplicable() && count($qtyOptions)):?>
+<select name="cart[<?php echo $_item->getId() ?>][qty]" id="cart[<?php echo $_item->getId() ?>][qty]" title="<?php echo $this->__('Qty') ?>">
+
+    <?php foreach($qtyOptions['values'] as $quantity): ?>
+        <option
+            value="<?php echo $quantity; ?>"
+            <?php if((int)$_item->getQty() == $quantity): ?>
+            selected="selected"
+            <?php elseif ($qtyOptions['selected'] == $quantity): ?>
+            selected="selected"
+            <?php endif; ?>
+        ><?php echo $quantity; ?></option>
+    <?php endforeach; ?>
+
+</select>
+
+<?php
+    else:
+    // Default quantity Input
+?>
+<input type="text" class="input-text qty validate-not-negative-number" name="qty[<?php echo $_item->getId() ?>]" value="<?php echo $this->getAddToCartQty($_item) * 1 ?>" />
+
+<?php endif; ?>
